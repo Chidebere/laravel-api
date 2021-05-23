@@ -36,6 +36,8 @@ Route::post('changeMyPassword', 'HomeController@changeMyPassword');
 
 Route::get('updateStatus', 'HomeController@updateStatus');
 
+
+
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 
     Route::post('login', 'LoginController@login')->name('login');
@@ -44,9 +46,9 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 
     Route::group(['middleware' => ['auth:api']], function () {
 
-        Route::get('email/verify/{hash}', 'VerificationController@verify')->name('verification.verify');
+        Route::get('/email/verify/{hash}', 'VerificationController@verify')->name('verification.verify');
 
-        Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
+        Route::get('/email/resend', 'VerificationController@resend')->name('verification.resend');
 
         Route::get('user', 'AuthenticationController@user')->name('user');
 
